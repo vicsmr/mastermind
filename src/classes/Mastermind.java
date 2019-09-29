@@ -29,15 +29,19 @@ public class Mastermind {
 			if (proposedPlayer.isLoser()) {
 				System.out.println("You've lost!!! :-(");
 			}
-			String optionInput = "";
-			Scanner scanner;
-			while (!optionInput.equals(YES) && !optionInput.equals(NO)) {
-				System.out.print("Do you want to continue? (s/n): ");
-				scanner = new Scanner(System.in);
-				optionInput = scanner.nextLine();
-			}
-			isNewGame = optionInput.equals(YES);
+			isNewGame = checkIsNewGame();
 		}
+	}
+	
+	private boolean checkIsNewGame() {
+		String optionInput = "";
+		Scanner scanner;
+		while (!optionInput.equals(YES) && !optionInput.equals(NO)) {
+			System.out.print("Do you want to continue? (s/n): ");
+			scanner = new Scanner(System.in);
+			optionInput = scanner.nextLine();
+		}
+		return optionInput.equals(YES);
 	}
 
 }

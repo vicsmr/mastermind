@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,6 +20,7 @@ public class ProposedCombination extends Combination {
 		String textInput = "";
 		Scanner scanner;
 		while(combinationIsWrong) {
+			colors = new ArrayList<Color>();
 			combinationIsWrong = false;
 			System.out.print("Propose a combination: ");
 			scanner = new Scanner(System.in);
@@ -52,7 +54,7 @@ public class ProposedCombination extends Combination {
 				return true;
 			}
 		}
-		if (positionToReview == combinationToGuessColors.size() -1) {
+		if (positionToReview == combinationToGuessColors.size() - 1) {
 			return false;
 		} else {
 			return repeatedColors(combinationToGuessColors, positionToReview + 1);

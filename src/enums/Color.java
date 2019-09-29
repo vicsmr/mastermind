@@ -3,15 +3,15 @@ package enums;
 public enum Color {
 	RED("r"), BLUE("b"), YELLOW("y"), GREEN("g"), ORANGE("o"), PURPLE("p");
 	
-	private final String color;
+	private final String COLOR;
 
 	Color(final String color) {
-        this.color = color;
+        this.COLOR = color;
     }
 	
 	public static Color valueOfLabel(String color) {
 	    for (Color enumValue : values()) {
-	        if (enumValue.color.equals(color)) {
+	        if (enumValue.COLOR.equals(color)) {
 	            return enumValue;
 	        }
 	    }
@@ -20,6 +20,6 @@ public enum Color {
 
     @Override
     public String toString() {
-        return color;
+        return COLOR;
     }
 }
