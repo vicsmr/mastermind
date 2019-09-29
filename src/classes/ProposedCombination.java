@@ -26,25 +26,29 @@ public class ProposedCombination extends Combination {
 			scanner = new Scanner(System.in);
 			textInput = scanner.nextLine();
 			String[] colorsListInput = textInput.split("");
-			if (colorsListInput.length != COMBINATION_LENGTH) {
-				System.out.println("Wrong proposed combination length");
-				combinationIsWrong = true;
-			} else {
-				Color actualColor;
-				for (int i = 0; i < colorsListInput.length; i++) {
-					actualColor = Color.valueOfLabel(colorsListInput[i]);
-					colors.add(actualColor);
-					if (actualColor == null) {
-						System.out.println("Wrong colors, they must be: rbygop");
-						combinationIsWrong = true;
-						break;
-					}
-				}
-				if (!combinationIsWrong && repeatedColors(colors, 0)) {
-					System.out.println("Repeated colors");
-					combinationIsWrong = true;
+			combinationIsWrong = checkAndLoadValidCombination(colorsListInput, combinationIsWrong);
+		}
+	}
+	
+	private boolean checkAndLoadValidCombination(String[] colorsListInput, boolean combinationIsWrong) {
+		if (colorsListInput.length != COMBINATION_LENGTH) {
+			System.out.println("Wrong proposed combination length");
+			return true;
+		} else {
+			Color actualColor;
+			for (int i = 0; i < colorsListInput.length; i++) {
+				actualColor = Color.valueOfLabel(colorsListInput[i]);
+				colors.add(actualColor);
+				if (actualColor == null) {
+					System.out.println("Wrong colors, they must be: rbygop");
+					return true;
 				}
 			}
+			if (!combinationIsWrong && repeatedColors(colors, 0)) {
+				System.out.println("Repeated colors");
+				return true;
+			}
+			return false;
 		}
 	}
 	

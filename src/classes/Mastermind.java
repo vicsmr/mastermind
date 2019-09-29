@@ -15,9 +15,9 @@ public class Mastermind {
 			System.out.println("----- MASTERMIND -----");
 			proposedPlayer = new ProposedPlayer();
 			secretPlayer = new SecretPlayer(proposedPlayer);
+			secretPlayer.prepare();
 			while (isNewGame || (!proposedPlayer.isWinner() && !proposedPlayer.isLoser())) {
 				isNewGame = false;
-				secretPlayer.prepare();
 				secretPlayer.write();
 				secretPlayer.answer();
 				proposedPlayer.writeAttempts();
